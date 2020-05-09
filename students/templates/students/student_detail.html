@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+  {% if student %}
+  <div class="container">
+    <h1>Student name: {{student.name}}</h1>
+
+    <h2>Student roll no : {{student.roll_no}}</h2>
+
+    <h3>Student class: {{student.branch}} <br> Semester: {{student.sem}}</h3>
+
+
+    <a href="{% url 'students:logout' %}">Logout</a>
+    {% else %}
+     <h1>Student does not exist </h1>
+
+    {% endif %}
+  {% else %}
+    <h1>Please Log in</h1>
+    <a href="{% url 'students:login'%}">Login</a>
+
+  {% endif %}
+
+  </div>
+
+{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/css/detail.css">
+{% endblock %}
