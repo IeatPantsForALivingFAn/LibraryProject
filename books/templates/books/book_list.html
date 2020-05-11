@@ -2,12 +2,13 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-{% for book in page_obj %}
-    {# Each "contact" is a Contact model object. #}
-    {{ book.name|upper }}<br>
-    ...
-{% endfor %}
-<div class="pagination">
+<div class="center">
+  {% for book in page_obj %}
+      <a href="{% url 'books:detail' book.pk %}">{{ book.name|upper }}</a><br>
+  {% endfor %}
+</div>
+
+<div class="pagination center">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; first</a>

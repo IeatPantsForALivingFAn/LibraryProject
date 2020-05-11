@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 <form method="post">
+  <h1>Sign-Up</h1>
   {{form.as_p}}
   {% csrf_token %}
   <input type="submit" value="SignUp" id='signup' class="btn btn-primary">

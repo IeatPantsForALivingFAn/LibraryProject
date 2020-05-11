@@ -17,7 +17,8 @@ def studentsignup(request):
             email = form.cleaned_data['email']
             password = form.cleaned_data['set_password']
             # create user
-            user = User(username = name,email= email, password=password)
+            user = User(username = name,email= email)
+            user.set_password(password)
             user.save()
             # create Student
             student = Student(user=user,name=name,roll_no=roll_no,sem=sem,branch=branch )
@@ -66,12 +67,12 @@ def loginPage(request):
         return render(request, 'students/login.html',{'form':form})
 
 def logoutPage(request):
-        logout(request)
-        return HttpResponseRedirect(reverse('students:thnks'))
+    logout(request)
+    return HttpResponseRedirect(reverse('students:thnks'))
 
 class Thanks(generic.TemplateView):
     template_name='students/thanks.html'
 
-class StudentDetailView(generic.DetailView,mixins.LoginRequiredMixin):
+class StudentDetailView(mixins.LoginRequiredMixin,generic.DetailView):
     model = Student
     template_name = 'students/student_detail.html'
