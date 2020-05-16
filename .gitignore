@@ -1,2 +1,8 @@
+<<<<<<< HEAD
 **/__pycache__
+=======
+books/__pycache__
+library/__pycache__
+students/__pycache__
+>>>>>>> 10b2a440086ff97bc1a71f96dffc1429b3428b7c
 db.sqlite3
