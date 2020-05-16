@@ -42,21 +42,19 @@ def loginPage(request):
             # if form is valid then
             username= form.cleaned_data['username']
             password = form.cleaned_data['password']
-            try:
-                user = User.objects.get(username=username,password=password)
-            except:
-                # if user has entered invalid Credentials or not present
-                print('invalid Credentials')
-                message = 'Invalid Credentials or SignUp'
-                form = Login()
-                return render(request,'students/login.html',context={'message':message,'form':form})
-            else:
+            user = authenticate(request,username=username,password=password)
+            print(user)
+            if user is not None:
                 # if user exists then
                 login(request,user)
                 print('student login done')
                 return HttpResponseRedirect(reverse('students:detail',args=[user.student.pk]))
-
-                print('user is authenticated',user,'username',username,'password',password)
+                # if user has entered invalid Credentials or not present
+            else:
+                print('invalid Credentials')
+                message = 'Invalid Credentials or SignUp'
+                form = Login()
+                return render(request,'students/login.html',context={'message':message,'form':form})
         else:
             print('invalid form')
             message = 'Invalid form'
