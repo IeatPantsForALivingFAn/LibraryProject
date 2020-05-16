@@ -6,5 +6,6 @@ app_name = 'books'
 urlpatterns= [
     path('create/',views.BookCreate.as_view(),name='create'),
     path('<int:pk>/detail/',views.BookDetail.as_view(),name ='detail'),
-    path('list/',views.BookList.as_view(),name='list')
+    path('list/',views.BookList.as_view(),name='list'),
+    path('search/',views.search_book, name='search'),
 ]
