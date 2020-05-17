@@ -11,8 +11,10 @@
 .login{
   border-radius: 5px;
 }
+input{
+  padding: 5px 5px;
+}
 body{
   background-image: url('/static/images/img1.jpg');
   background-size: cover;
-  font-family: "Times New Roman", Times, serif;
 }

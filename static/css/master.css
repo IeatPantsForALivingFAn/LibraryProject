@@ -1,6 +1,16 @@
+body{
+  font-family: 'Pangolin', cursive;
+}
 .navbar-brand{
   font-size: 30px;
 }
 .nav-link{
   font-size: 20px;
+}
+.center {
+  width: 80%;
+  border: 20px solid #bdc3c7;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 700px;
 }
